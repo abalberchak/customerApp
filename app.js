@@ -4,6 +4,7 @@ var path 						 = require('path');
 var expressValidator = require('express-validator');
 var mongojs 				 = require('mongojs');
 
+var ObjectId = mongojs.ObjectId;
 //needed to talk to DB
 var db = mongojs('customerapp', ['users']);
 
@@ -123,7 +124,18 @@ app.post('/users/add', function(req, res) {
 			}
 		});
 	}
+});
 
+
+app.delete('/users/delete/:id', function(req, res) {
+	// console.log(req.params.id);
+	db.users.remove({_id: ObjectId(req.params.id)}, function(err, result) {
+		if (err) {
+			console.log(err);
+		} else {
+			res.redirect('/');
+		}
+	});
 });
 
 

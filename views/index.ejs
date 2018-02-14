@@ -30,9 +30,9 @@
 
 		</form>
 		<h1><%= title %></h1>
-		<ul>
+		<ul> 
 		<% users.forEach(function(user){ %>
-			<li><%= user.first_name %> <%= user.last_name %></li>
+			<li><%= user.first_name %> <%= user.last_name %> - <a href="#" class="deleteUser" data-id="<%= user._id %>">Delete</a></li>
 		<% }) %>
 		</ul>
 
